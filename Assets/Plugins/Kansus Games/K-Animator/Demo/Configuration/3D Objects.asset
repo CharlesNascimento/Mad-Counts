@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e4d4720fa14a841919f8f5e3eca1eb, type: 3}
+  m_Name: 3D Objects
+  m_EditorClassIdentifier: 
+  tweener: 0
+  animationSpeed: 1
+  pingPongAfterInAnimation: 1
+  interruptionBehavior: 0
+  startAutomatically: 1
+  initialAnimationType: 3
+  initialAnimationIdleDuration: 5

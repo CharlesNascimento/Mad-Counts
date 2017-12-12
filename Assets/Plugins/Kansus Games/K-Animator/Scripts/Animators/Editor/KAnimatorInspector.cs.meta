@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: f51ba779d03b22d4684d3d5f2fe6b562
+timeCreated: 1506903284
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - kSkin: {fileID: 11400000, guid: eb433e44c5a18554f9fa31ca06c67c8c, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
