@@ -1,3 +1,11 @@
-# Tabuada do Barulho
+# Mad Counts
 
-Na Tabuada do Barulho, demonstre que você possui velocidade de raciocínio e técnica apurada! Fuja das respostas erradas, mas fique muito atento para não deixar as respostas corretas escaparem! Mostre para seus amigos que você não é bom apenas nos vídeos games, mas também na Matemática (ou em decorar tabuada)!
+Mad Counts is a Unity game which consists of solving counts, collecting the correct answers and avoiding wrong answers which fall from above.
+
+![Main Menu](https://portfolium1.cloudimg.io/fit/960x540/c000000/https://cdn.portfolium.com/ugcs3%2Fv3%2Fproject_attachments%2FscNoNVFHTouBDCwLaFVG_Screenshot+%283%29.png)
+
+If you want to know more about it, you can check it out in my [portfolio](https://portfolium.com/entry/mad-counts).
+
+## License
+
+This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
