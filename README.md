@@ -8,7 +8,7 @@ If you want to know more about it, you can check it out in my [portfolio](https:
 
 ## Download
 
-The application can be downloaded from [Google Play](https://play.google.com/store/apps/details?id=com.kansusgames.madcounts).
+The game can be downloaded from [Google Play](https://play.google.com/store/apps/details?id=com.kansusgames.madcounts).
 
 ## License
 
