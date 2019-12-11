@@ -18,6 +18,11 @@ public class DespawnTrigger : MonoBehaviour
             audioManager.PlayMissedSound();
         }
 
-        Destroy(other);
+
+        if (other.tag == "CorrectAnswer" || other.tag == "WrongAnswer")
+        {
+            Destroy(other);
+        }
+
     }
 }

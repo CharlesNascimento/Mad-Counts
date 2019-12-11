@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -20,7 +22,14 @@ public class GameManager : MonoBehaviour
     private int maxMissedCorrectAnswers = 5;
 
     [SerializeField]
-    private float speed = 2.5f;
+    private float spawnInterval = 2.8f;
+
+    [SerializeField]
+    private float minSpawnInterval = 2.4f;
+
+    [SerializeField]
+    private float spawnIntervalDecrease = 0.025f;
+
 
     private int missedCorrectAnswers;
 
@@ -35,6 +44,8 @@ public class GameManager : MonoBehaviour
     private float leftScreenBound;
     private float rightScreenBound;
     private float upperScreenBound = 5.5f;
+
+    private  List<Vector3> lastAnswers = new List<Vector3>(5);
 
     public int Score
     {
@@ -56,7 +67,7 @@ public class GameManager : MonoBehaviour
         {
             missedCorrectAnswers = value;
 
-            lostFoodLabel.text = "Perdidos: " + missedCorrectAnswers + "/" + maxMissedCorrectAnswers;
+            lostFoodLabel.text = "Falhas: " + missedCorrectAnswers + "/" + maxMissedCorrectAnswers;
 
             if (MissedCorrectAnswers >= maxMissedCorrectAnswers)
             {
@@ -71,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        lostFoodLabel.text = "Perdidos: " + 0 + "/" + maxMissedCorrectAnswers;
+        lostFoodLabel.text = "Falhas: " + 0 + "/" + maxMissedCorrectAnswers;
 
         Vector3 screenWidthWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0.0f, 0.0f));
         rightScreenBound = screenWidthWorld.x - CHALKBOARD_FRAME_WIDTH;
@@ -86,37 +97,60 @@ public class GameManager : MonoBehaviour
 
     public void StartSpawning()
     {
-        if (Score % 5 == 0 && speed > 0.3f)
+        
+        if (score != 0 && spawnInterval > minSpawnInterval)
         {
-            speed -= 0.05f;
-            Debug.Log("Game got faster. + " + speed);
+            spawnInterval -= spawnIntervalDecrease;
+            Debug.Log("Game got faster. + " + spawnInterval);
         }
 
         DestroyAllAnswers();
         RefreshExpression();
-        Invoke("CreateObjects", 0.5f);
+        StopAllCoroutines();
+        StartCoroutine(Spawn(spawnInterval));
     }
-
-    private void CreateObjects()
+ 
+    private void SpawnAnswer()
     {
         int answer = Random.Range(0, 5);
+        Debug.Log("count " + lastAnswers.Count);
+        Vector3 position = new Vector3(Random.Range(leftScreenBound, rightScreenBound), upperScreenBound, 0);
+        int i = 0;
+        while (!IsValidPosition(position) && i < 500)
+        {   
+            position = new Vector3(Random.Range(leftScreenBound, rightScreenBound), upperScreenBound, 0);
+            i++;
+            Debug.Log("i " + i);
+        }
+
+        if (lastAnswers.Count == 5)
+        {
+            lastAnswers.RemoveAt(lastAnswers.Count - 1);
+        }
+       
+        lastAnswers.Insert(0, position);
 
         if (answer == 0)
         {
-            Vector3 position = new Vector3(Random.Range(leftScreenBound, rightScreenBound), upperScreenBound, 0);
             GameObject obj = Instantiate(objects[0], position, Quaternion.identity);
             TextMesh text = obj.GetComponent<TextMesh>();
             text.text = evaluation.ToString();
         }
         else
-        {
-            Vector3 position = new Vector3(Random.Range(leftScreenBound, rightScreenBound), upperScreenBound, 0);
+        {            
             GameObject obj = Instantiate(objects[1], position, Quaternion.identity);
             TextMesh text = obj.GetComponent<TextMesh>();
             text.text = CloseNumber(evaluation).ToString();
         }
-        
-        Invoke("CreateObjects", speed);
+    }
+
+    IEnumerator Spawn(float interval)
+    {
+        while (true)
+        {
+            SpawnAnswer();
+            yield return new WaitForSeconds(interval);
+        }       
     }
 
     public void RefreshExpression()
@@ -171,5 +205,18 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         Application.LoadLevel("MainMenu");
+    }
+
+    private bool IsValidPosition(Vector3 position)
+    {
+        foreach (var item in lastAnswers)
+        {
+            if (position.x <= item.x + 1f && position.x >= item.x - 1f)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

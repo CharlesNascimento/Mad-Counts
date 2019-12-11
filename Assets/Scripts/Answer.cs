@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class Answer : MonoBehaviour
-{
+{  
     [SerializeField]
     private float speed = 2.5f;
     
