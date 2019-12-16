@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+
 
 public class Character : MonoBehaviour
 {
@@ -19,11 +21,14 @@ public class Character : MonoBehaviour
     [SerializeField]
     private bool invencible = false;
 
-    private float screenCenter;    
+    private float screenCenter;
+
+    private Animator anim;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
         Vector3 screenWidthWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0.0f, 0.0f));
         screenCenter = 0;       
@@ -31,35 +36,52 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerPosition = transform.position;
+        //anim.SetInteger("speed", 0);
+        Vector3 playerPosition = transform.position;   
+        
         if (Input.GetMouseButton(0))
         {
             Vector3 clickPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
-            Vector3 clickPositionWorld = Camera.main.ScreenToWorldPoint(clickPosition);
+            Vector3 clickPositionWorld = Camera.main.ScreenToWorldPoint(clickPosition);           
 
             if (clickPositionWorld.x > screenCenter)
             {
                 transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, playerPosition.y, 0);
                 spriteRenderer.flipX = false;
+                anim.SetInteger("speed", 1);
+
             }
             else if (clickPositionWorld.x < screenCenter)
             {
                 transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, playerPosition.y, 0);
                 spriteRenderer.flipX = true;
+                anim.SetInteger("speed", 1);
+            }
+
+        }
+        else
+        {
+
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, playerPosition.y, 0);
+                spriteRenderer.flipX = false;
+                anim.SetInteger("speed", 1);
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, playerPosition.y, 0);
+                spriteRenderer.flipX = true;
+                anim.SetInteger("speed", 1);
+            }
+            else
+            {
+                anim.SetInteger("speed", 0);
             }
         }
-        
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, playerPosition.y, 0);
-            spriteRenderer.flipX = false;
-        }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, playerPosition.y, 0);
-            spriteRenderer.flipX = true;
-        }
     }
+
+        
 
     void OnTriggerEnter2D(Collider2D col)
     {
