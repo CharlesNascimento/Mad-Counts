@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Name: I2Languages
+  m_EditorClassIdentifier: 
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 1
+    mTerms:
+    - Term: Easy
+      TermType: 0
+      Description: 
+      Languages:
+      - Easy
+      - "F\xE1cil"
+      - "F\xE1cil"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Very Easy
+      TermType: 0
+      Description: 
+      Languages:
+      - Very Easy
+      - "Muito F\xE1cil"
+      - "Muy F\xE1cil"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Normal
+      TermType: 0
+      Description: 
+      Languages:
+      - Normal
+      - Normal
+      - Normal
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Hard
+      TermType: 0
+      Description: 
+      Languages:
+      - Hard
+      - "Dif\xEDcil"
+      - "Dif\xEDcil"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: AppName
+      TermType: 0
+      Description: 
+      Languages:
+      - Mad Counts
+      - Tabuada do Barulho
+      - Cuentas Locas
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Difficulty
+      TermType: 0
+      Description: 
+      Languages:
+      - Difficulty
+      - Dificuldade
+      - Dificultad
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Title
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Mad
+
+        Counts'
+      - "Tabuada \ndo\nbarulho"
+      - 'Cuentas
+
+        Locas'
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Highscore
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Highscore: {[Highscore]}'
+      - 'Recorde: {[Highscore]}'
+      - "R\xE9cord: {[Highscore]}"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Score
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Score: {[Score]}'
+      - "Pontua\xE7\xE3o: {[Score]}"
+      - "Puntuaci\xF3n: {[Score]}"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Tutorial0
+      TermType: 0
+      Description: 
+      Languages:
+      - Welcome to Mad Counts!
+      - "Bem vindo \xE0 Tabuada do Barulho!"
+      - "\xA1Bienvenidos a Cuentas Locas!"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Tutorial1
+      TermType: 0
+      Description: 
+      Languages:
+      - You must collect the answer for this expression
+      - "Voc\xEA deve coletar a resposta dessa express\xE3o"
+      - "Usted debe recoger la respuesta de esta expresi\xF3n"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Tutorial2
+      TermType: 0
+      Description: 
+      Languages:
+      - You cannot let the correct answer get away 10 times
+      - "Voc\xEA n\xE3o pode deixar a resposta correta passar 10 vezes"
+      - No puedes dejar pasar la respuesta correcta 10 veces
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Tutorial3
+      TermType: 0
+      Description: 
+      Languages:
+      - Press the right side of the screen to move right
+      - Pressione o lado direito da tela para se mover para a direita
+      - Presione el lado derecho de la pantalla para moverse a la derecha
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Tutorial4
+      TermType: 0
+      Description: 
+      Languages:
+      - Press the left side of the screen to move left
+      - Pressione o lado esquerdo da tela para se mover para a esquerda
+      - Presione el lado izquierdo de la pantalla para moverse a la izquierda
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Tutorial5
+      TermType: 0
+      Description: 
+      Languages:
+      - 'You lose if you collect a wrong answer
+
+        
+
+        [ HAVE A GOOD
+        TIME [
+
+        ]'
+      - "Voc\xEA perde caso pegue uma resposta errada\n\n[ DIVIRTA-SE [\n]"
+      - "Pierdes si recoges una respuesta incorrecta\r\n\r\n[ DIVI\xC9RTETE [\r\n]"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: TutorialContinue
+      TermType: 0
+      Description: 
+      Languages:
+      - Tap the screen to continue...
+      - Toque na tela para continuar...
+      - Toque la pantalla para continuar...
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Solve
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Solve: {[ExpressionToSolve]}'
+      - 'Resolva: {[ExpressionToSolve]}'
+      - 'Resuelve: {[ExpressionToSolve]}'
+      Flags: 000000
+      Languages_Touch: []
+    - Term: LostAnswers
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Lost: {[LostAnswers]}'
+      - 'Perdidas: {[LostAnswers]}'
+      - 'Perdidas: {[LostAnswers]}'
+      Flags: 000000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 1
+    mTerm_AppName: 
+    mLanguages:
+    - Name: English
+      Code: en
+      Flags: 0
+    - Name: Portuguese
+      Code: pt
+      Flags: 0
+    - Name: Spanish
+      Code: es
+      Flags: 0
+    IgnoreDeviceLanguage: 0
+    _AllowUnloadingLanguages: 0
+    Google_WebServiceURL: 
+    Google_SpreadsheetKey: 
+    Google_SpreadsheetName: 
+    Google_LastUpdatedVersion: 
+    Google_Password: change_this
+    GoogleUpdateFrequency: 3
+    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateSynchronization: 1
+    GoogleUpdateDelay: 0
+    Assets: []
+    Spreadsheet_LocalFileName: 
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1

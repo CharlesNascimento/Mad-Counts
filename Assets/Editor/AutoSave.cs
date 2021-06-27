@@ -20,6 +20,12 @@ public class AutosaveOnRun
             AssetDatabase.SaveAssets();
         };
     }
+
+    [MenuItem("Screenshot/Take screenshot")]
+    static void Screenshot()
+    {
+        ScreenCapture.CaptureScreenshot("screenshot.png");
+    }
 }
 /// <summary>
 /// This script creates a new window in the editor with a autosave function. 
