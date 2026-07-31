@@ -42,8 +42,8 @@ namespace I2.Loc
         #endregion
 
         #region Header
-        public delegate void fnOnToggled(bool enabled);
-        static public bool DrawHeader (string text, string key, bool ShowToggle=false, bool ToggleState=false, fnOnToggled OnToggle = null, string HelpURL=default(string), Color disabledColor = default(Color))
+
+        static public bool DrawHeader (string text, string key, bool ShowToggle=false, bool ToggleState=false, System.Action<bool> OnToggle= null, string HelpURL=default(string), Color disabledColor = default(Color))
 		{
 			bool state = EditorPrefs.GetBool(key, false);
 
@@ -53,15 +53,15 @@ namespace I2.Loc
 			return newState;
 		}
 
-		static public bool DrawHeader (string text, bool state, bool ShowToggle=false, bool ToggleState=false, fnOnToggled OnToggle = null, string HelpURL=default(string), Color disabledColor = default(Color), bool allowCollapsing = true)
+		static public bool DrawHeader (string text, bool state, bool ShowToggle=false, bool ToggleState=false, System.Action<bool> OnToggle= null, string HelpURL=default(string), Color disabledColor = default(Color), bool allowCollapsing = true)
 		{
 			GUIStyle Style = new GUIStyle(EditorStyles.foldout);
 			Style.richText = true;
 			EditorStyles.foldout.richText = true;
 			if (state)
 			{
-				//GUI.backgroundColor=DarkGray;
-				GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea/*, GUILayout.Height(1)*/);
+				GUI.backgroundColor=DarkGray;
+				GUILayout.BeginVertical(EditorStyles.textArea, GUILayout.Height(1));
 				GUILayout.BeginHorizontal();
                 if (!string.IsNullOrEmpty(text))
                 {
@@ -86,7 +86,7 @@ namespace I2.Loc
 				GUILayout.EndHorizontal();
 				GUILayout.Space(2);
 				
-				//GUI.backgroundColor = Color.white;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
@@ -156,7 +156,7 @@ namespace I2.Loc
 	
 		static public void BeginContents ()
 		{
-			EditorGUILayout.BeginHorizontal(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.MinHeight(10f));
+			EditorGUILayout.BeginHorizontal(EditorStyles.textArea, GUILayout.MinHeight(10f));
 			GUILayout.Space(2f);
 			EditorGUILayout.BeginVertical();
 			GUILayout.Space(2f);
@@ -230,7 +230,7 @@ namespace I2.Loc
 		static public int DrawShadowedTabs( int Index, string[] Tabs, int height = 25, bool expand=true )
 		{
 			GUI.backgroundColor=Color.Lerp (Color.gray, Color.white, 0.2f);
-			GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Height(1));
+			GUILayout.BeginVertical(EditorStyles.textArea, GUILayout.Height(1));
 				GUI.backgroundColor=Color.white;
 				GUILayout.Space(2);
 				Index = DrawTabs( Index, Tabs, height: height, expand:expand );
@@ -246,7 +246,7 @@ namespace I2.Loc
 			//width = Mathf.Max (width, height * Tabs[0].width/(float)Tabs[0].height);
 
 			GUILayout.BeginHorizontal();
-			float width = (EditorGUIUtility.currentViewWidth-(MyStyle.border.left+MyStyle.border.right)*(Tabs.Length-1)) / (float)Tabs.Length;
+			float width = (Screen.width-(MyStyle.border.left+MyStyle.border.right)*(Tabs.Length-1)) / (float)Tabs.Length;
 			for (int i=0; i<Tabs.Length; ++i)
 			{
 				if ( GUILayout.Toggle(Index==i, Tabs[i], MyStyle, GUILayout.Height(height), GUILayout.Width(width)) && Index!=i) 
@@ -426,8 +426,8 @@ namespace I2.Loc
 
 		public static IEnumerable<GameObject> SceneRoots()
 		{
-			var prop = new HierarchyProperty(HierarchyType.GameObjects);
-			var expanded = new int[0];
+			var prop = new HierarchyIterator(HierarchyType.GameObjects);
+			var expanded = new EntityId[0];
 			while (prop.Next(expanded)) {
 				yield return prop.pptrValue as GameObject;
 			}

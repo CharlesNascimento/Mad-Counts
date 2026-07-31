@@ -596,7 +596,7 @@ namespace KansusGames.KansusAnimator.Animator
 
             foreach (AnimatorBehaviour child in childrenWithParent)
             {
-                if (child.gameObject.GetInstanceID() != GetInstanceID())
+                if (child.gameObject != gameObject)
                 {
                     children[i] = child;
                     i++;
